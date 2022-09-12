@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <fstream>
 
 int* createArr(std::ifstream& fin, int* size) // Create array from file
@@ -24,12 +24,14 @@ int* createArr(std::ifstream& fin, int* size) // Create array from file
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
+
     std::string fileIn = "in.txt", fileOut = "out.txt";
     std::ifstream fin(fileIn);
 
     if (!fin.is_open())
     {
-        std::cout << "Íå óäàëîñü îòêðûòü ôàéë" << std::endl;
+        std::cout << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚ÑŒ Ñ„Ð°Ð¹Ð»" << std::endl;
     }
     else
     {
