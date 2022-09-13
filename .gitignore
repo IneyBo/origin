@@ -1,0 +1,13 @@
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# Lesson_1
+Lesson_1/.vs/
+Lesson_1/Lesson_1.sln
+Lesson_1/Task_1/reserve/
+Lesson_1/Task_1/x64/
+Lesson_1/x64/
+Lesson_1/Task_1/in.txt
+Lesson_1/Task_1/out.txt
+
