@@ -1,22 +1,15 @@
 ﻿#include <iostream>
 #include <fstream>
 
-int* createArr(std::ifstream& fin, int* size) // Create array from file
-{
-    fin >> *size; // Removed array size from array to separate variable
+/*В этом решении создаю массивы, только если размер не равен нулю*/
 
+int* createArr(std::ifstream& fin, int* size) // Создание массива из данных файла
+{
     int* arr = new int[*size];
 
-    if (*size > 0)
+    for (int i = 0; i < *size; i++)
     {
-        for (int i = 0; i < *size; i++)
-        {
-            fin >> arr[i];
-        }
-    }
-    else if (*size == 0) // Condition if size is zero
-    {
-        arr = nullptr;
+        fin >> arr[i];
     }
 
     return arr;
@@ -36,16 +29,28 @@ int main()
     else
     {
         int size = 0, sizeArr1 = 0, sizeArr2 = 0;
-        int* arr1 = createArr(fin, &size);
+        int* arr1 = 0; // В этом решении объявил массив (пойнтер) до задания ему значения в условии. Инициализировал его пока нулем. Надеюсь так можно. Так как компилятор ругается на неициализированную переменную.
+        int* arr2 = 0;
+
+        fin >> size;
         sizeArr1 = size;
-        int* arr2 = createArr(fin, &size);
+        if (sizeArr1 > 0) // Создаю массив, только если размер не равен нулю
+        {
+            arr1 = createArr(fin, &size);
+        }
+
+        fin >> size;
         sizeArr2 = size;
+        if (sizeArr2 > 0) // Создаю массив, только если размер не равен нулю
+        {
+            arr2 = createArr(fin, &size);
+        }
 
         fin.close();
 
         std::ofstream fout(fileOut);
 
-        // Second array output
+        // Вывод второго массива
         if (sizeArr2 > 0)
         {
             fout << sizeArr2 << std::endl;
@@ -54,16 +59,16 @@ int main()
             {
                 fout << " " << arr2[i];
             }
+            delete[] arr2;
         }
-        else if (sizeArr2 == 0) // Condition if size is zero
+        else if (sizeArr2 == 0)
         {
             fout << sizeArr2;
         }
         fout << std::endl;
 
-        delete[] arr2;
 
-        // First array output
+        // Вывод первого массива
         if (sizeArr1 > 0)
         {
             fout << sizeArr1 << std::endl;
@@ -72,14 +77,13 @@ int main()
                 fout << arr1[i] << " ";
             }
             fout << arr1[0];
+            delete[] arr1;
         }
-        else if (sizeArr1 == 0) // Condition if size is zero
+        else if (sizeArr1 == 0)
         {
             fout << sizeArr1;
         }
         fout << std::endl;
-
-        delete[] arr1;
 
         fout.close();
     }
