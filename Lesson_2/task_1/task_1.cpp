@@ -26,7 +26,7 @@ int main()
     int in = 1; // Вводимое число
     std::string outMonth; // Вывод месяца
 
-    while (in != 0)
+    while (true)
     {
         std::cout << "Введите номер месяца: ";
         std::cin >> in;
