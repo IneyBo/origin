@@ -1,24 +1,13 @@
-*.vcxproj
-*.vcxproj.filters
-*.vcxproj.user
+**/.vs
+**/*.sln
+**/**/*.vcxproj
+**/**/*.vcxproj.filters
+**/**/*.vcxproj.user
+**/x64
+**/**/x64
+**/**/reserve
 
 # Lesson_1
-Lesson_1/.vs/
-Lesson_1/Lesson_1.sln
-Lesson_1/Task_1/reserve/
-Lesson_1/Task_1/x64/
-Lesson_1/x64/
 Lesson_1/Task_1/in.txt
 Lesson_1/Task_1/out.txt
-
-# Lesson_2
-Lesson_2/.vs/
-Lesson_2/Lesson_2.sln
-Lesson_2/task_1/x64/
-Lesson_2/x64/
-
-../.vs
-../*.sln
-../../x64
-../x64
 
