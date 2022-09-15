@@ -1,13 +1,17 @@
 **/.vs
-**/*.sln
-**/**/*.vcxproj
-**/**/*.vcxproj.filters
-**/**/*.vcxproj.user
+#**/*.sln
+#**/**/*.vcxproj
+**/*.vcxproj.filters
+**/*.vcxproj.user
 **/x64
-**/**/x64
-**/**/reserve
+**/reserve
 
-# Lesson_1
+# Full Address
+Lesson_1/Lesson_1.sln
+Lesson_1/Task_1/Task_1.vcxproj
+Lesson_2/Lesson_2.sln
+Lesson_2/task_1/task_1.vcxproj
+Lesson_2/task_2/task_2.vcxproj
+Lesson_2/task_3/task_3.vcxproj
 Lesson_1/Task_1/in.txt
 Lesson_1/Task_1/out.txt
-
