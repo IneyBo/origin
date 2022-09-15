@@ -78,6 +78,7 @@ int main()
             break;
         default:
             outMonth = "Неправильный месяц";
+            break;
         }
 
         std::cout << outMonth << std::endl;
