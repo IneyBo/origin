@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 
 class Calculator
 {
@@ -92,16 +92,16 @@ int main()
 
     while (true)
     {
-        std::cout << "Ââåäèòå num1: ";
+        std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ num1: ";
         std::cin >> num1;
-        std::cout << "Ââåäèòå num2: ";
+        std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ num2: ";
         std::cin >> num2;
 
         Calculator calc;
         
         if (!calc.set_num1(num1) || !calc.set_num2(num2))
         {
-            std::cout << "Íåâåðíûé ââîä!" << std::endl;
+            std::cout << "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ð²Ð²Ð¾Ð´!" << std::endl;
             continue;
         }
 
