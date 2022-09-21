@@ -52,6 +52,10 @@ private:
     int size = 0;
     Address* arrOfAddresses = nullptr;
 public:
+    int getSize()
+    {
+        return size;
+    }
     void fillArrOfAddresses(std::ifstream& fin) // Заполнение массива адресов
     {
         fin >> size;
@@ -64,12 +68,30 @@ public:
             }
         }
     }
-    void outReverseArrOfAddresses(std::ofstream& fout) // Вывод в файл массива адресов в обратном порядке
+    void sortArrOfAddresses() // Сортировка массива
+    {
+        bool swapped = false;
+        do
+        {
+            swapped = false;
+            for (int i = 1; i < size; ++i) // иду по массиву от начала до конца
+            {
+                if (arrOfAddresses[i - 1].getCity() > arrOfAddresses[i].getCity())
+                {
+                    Address temp = arrOfAddresses[i];
+                    arrOfAddresses[i] = arrOfAddresses[i - 1];
+                    arrOfAddresses[i - 1] = temp;
+                    swapped = true;
+                }
+            }
+        } while (swapped);
+    }
+    void outForwardArrOfAddresses(std::ofstream& fout) // Вывод в файл массива адресов
     {
         fout << size;
         if (size != 0)
         {
-            for (int i = size - 1; i >= 0 ; --i)
+            for (int i = 0; i < size; ++i)
             {
                 fout << std::endl << arrOfAddresses[i].getCity() << ", " << arrOfAddresses[i].getStreet() << ", " << arrOfAddresses[i].getHouse() << ", " << arrOfAddresses[i].getFlat();
             }
@@ -100,7 +122,12 @@ int main()
 
         std::ofstream fout(fileOut);
 
-        setOfAddresses.outReverseArrOfAddresses(fout);
+        if (setOfAddresses.getSize() > 0)
+        {
+            setOfAddresses.sortArrOfAddresses();
+        }
+
+        setOfAddresses.outForwardArrOfAddresses(fout);
 
         fout.close();
     }
