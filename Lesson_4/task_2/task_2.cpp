@@ -28,19 +28,19 @@ public:
     }
 
     // Геттеры
-    std::string getCity()
+    std::string getCity() const
     {
         return city;
     }
-    std::string getStreet()
+    std::string getStreet() const
     {
         return street;
     }
-    unsigned short getHouse()
+    unsigned short getHouse() const
     {
         return house;
     }
-    unsigned short getFlat()
+    unsigned short getFlat() const
     {
         return flat;
     }
@@ -52,7 +52,7 @@ private:
     int size = 0;
     Address* arrOfAddresses = nullptr;
 public:
-    int getSize()
+    int getSize() const
     {
         return size;
     }
