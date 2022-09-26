@@ -1,4 +1,4 @@
-#include <Windows.h>
+ï»¿#include <Windows.h>
 #include <iostream>
 
 class Figure
@@ -43,9 +43,9 @@ int main()
     Triangle triangle;
     Quadrilateral quadrilateral;
 
-    std::cout << "Êîëè÷åñòâî ñòîðîí:" << std::endl
-                << "Ôèãóðà: " << figure.getNumberOfSides() << std::endl
-                << "Òðåóãîëüíèê: " << triangle.getNumberOfSides() << std::endl
-                << "×åòûðåõóãîëüíèê: " << quadrilateral.getNumberOfSides() << std::endl;
+    std::cout << "ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÑ‚Ð¾Ñ€Ð¾Ð½:" << std::endl
+                << "Ð¤Ð¸Ð³ÑƒÑ€Ð°: " << figure.getNumberOfSides() << std::endl
+                << "Ð¢Ñ€ÐµÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº: " << triangle.getNumberOfSides() << std::endl
+                << "Ð§ÐµÑ‚Ñ‹Ñ€ÐµÑ…ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº: " << quadrilateral.getNumberOfSides() << std::endl;
     return 0;
 }

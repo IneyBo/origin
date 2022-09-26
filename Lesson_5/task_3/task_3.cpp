@@ -1,59 +1,59 @@
-#include <Windows.h>
+п»ї#include <Windows.h>
 #include <iostream>
 
-class Figure // Класс фигура
+class Figure // РљР»Р°СЃСЃ С„РёРіСѓСЂР°
 {
 protected:
-    bool isCorrect = true; // Переменная для проверки введенных данных
-    std::string name; // Имя фигуры для отображения в консоли
+    bool isCorrect = true; // РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РїСЂРѕРІРµСЂРєРё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
+    std::string name; // РРјСЏ С„РёРіСѓСЂС‹ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІ РєРѕРЅСЃРѕР»Рё
     unsigned short numberOfSides;
 
 public:
     Figure()
     {
-        name = "Фигура";
+        name = "Р¤РёРіСѓСЂР°";
         numberOfSides = 0;
     }
-    virtual void print() // Метод вывода в консоль
+    virtual void print() // РњРµС‚РѕРґ РІС‹РІРѕРґР° РІ РєРѕРЅСЃРѕР»СЊ
     {
-        std::cout << name << ":" << std::endl << (isCorrect ? "Правильная" : "Неправильная") << std::endl << "Количество сторон: " << numberOfSides << std::endl;
+        std::cout << name << ":" << std::endl << (isCorrect ? "РџСЂР°РІРёР»СЊРЅР°СЏ" : "РќРµРїСЂР°РІРёР»СЊРЅР°СЏ") << std::endl << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚РѕСЂРѕРЅ: " << numberOfSides << std::endl;
         std::cout << std::endl;
     }
-    //bool getISCorrect() const // Геттер переменной проверки введенных данных
+    //bool getISCorrect() const // Р“РµС‚С‚РµСЂ РїРµСЂРµРјРµРЅРЅРѕР№ РїСЂРѕРІРµСЂРєРё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
     //{
     //    return isCorrect;
     //}
-    //std::string getName() const // Геттер имени фигуры
+    //std::string getName() const // Р“РµС‚С‚РµСЂ РёРјРµРЅРё С„РёРіСѓСЂС‹
     //{
     //    return name;
     //}
 };
 
-class Triangle : public Figure // Класс треугольник, наследник Figure
+class Triangle : public Figure // РљР»Р°СЃСЃ С‚СЂРµСѓРіРѕР»СЊРЅРёРє, РЅР°СЃР»РµРґРЅРёРє Figure
 {
 protected:
-    unsigned long a; // Сторона a
-    unsigned long b; // Сторона b
-    unsigned long c; // Сторона c
-    unsigned long A; // Угол A
-    unsigned long B; // Угол B
-    unsigned long C; // Угол C
+    unsigned long a; // РЎС‚РѕСЂРѕРЅР° a
+    unsigned long b; // РЎС‚РѕСЂРѕРЅР° b
+    unsigned long c; // РЎС‚РѕСЂРѕРЅР° c
+    unsigned long A; // РЈРіРѕР» A
+    unsigned long B; // РЈРіРѕР» B
+    unsigned long C; // РЈРіРѕР» C
 
 public:
-    Triangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Figure() // Конструктор
+    Triangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Figure() // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     {
         numberOfSides = 3;
-        name = "Треугольник";
+        name = "РўСЂРµСѓРіРѕР»СЊРЅРёРє";
         this->a = a;
         this->b = b;
         this->c = c;
         this->A = A;
         this->B = B;
         this->C = C;
-        isCorrect = ((A + B + C) == 180) ? true : false; //Проверка корректности введенных данных
+        isCorrect = ((A + B + C) == 180) ? true : false; //РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
     }
 
-    // Геттеры
+    // Р“РµС‚С‚РµСЂС‹
     unsigned long get_a() const
     {
         return a;
@@ -79,73 +79,73 @@ public:
         return C;
     }
 
-    void print() override // Вывод в консоль
+    void print() override // Р’С‹РІРѕРґ РІ РєРѕРЅСЃРѕР»СЊ
     {
-        std::cout << name << ":" << std::endl << (isCorrect ? "Правильная" : "Неправильная") << std::endl << "Количество сторон: " << numberOfSides << std::endl << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl
-            << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
+        std::cout << name << ":" << std::endl << (isCorrect ? "РџСЂР°РІРёР»СЊРЅР°СЏ" : "РќРµРїСЂР°РІРёР»СЊРЅР°СЏ") << std::endl << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚РѕСЂРѕРЅ: " << numberOfSides << std::endl << "РЎС‚РѕСЂРѕРЅС‹: a=" << a << " b=" << b << " c=" << c << std::endl
+            << "РЈРіР»С‹: A=" << A << " B=" << B << " C=" << C << std::endl;
         std::cout << std::endl;
     }
 };
 
-class RightTriangle : public Triangle // Класс прямоугольный треугольник, наследник Triangle
+class RightTriangle : public Triangle // РљР»Р°СЃСЃ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅС‹Р№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє, РЅР°СЃР»РµРґРЅРёРє Triangle
 {
 public:
-    RightTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C) //Конструктор
+    RightTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C) //РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     {
-        name = "Прямоугольный треугольник";
+        name = "РџСЂСЏРјРѕСѓРіРѕР»СЊРЅС‹Р№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє";
         this->a = a;
         this->b = b;
         this->c = c;
         this->A = A;
         this->B = B;
         this->C = C;
-        isCorrect = (C == 90 && isCorrect) ? true : false;//Проверка корректности введенных данных
+        isCorrect = (C == 90 && isCorrect) ? true : false;//РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
     }
 };
 
-class IsoscelesTriangle : public Triangle // Класс равнобедренный треугольник, наследник Triangle
+class IsoscelesTriangle : public Triangle // РљР»Р°СЃСЃ СЂР°РІРЅРѕР±РµРґСЂРµРЅРЅС‹Р№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє, РЅР°СЃР»РµРґРЅРёРє Triangle
 {
 public:
-    IsoscelesTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C)//Конструктор
+    IsoscelesTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C)//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     {
-        name = "Равнобедренный треугольник";
+        name = "Р Р°РІРЅРѕР±РµРґСЂРµРЅРЅС‹Р№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє";
         this->a = a;
         this->b = b;
         this->c = c;
         this->A = A;
         this->B = B;
         this->C = C;
-        isCorrect = (a == c && A == C && isCorrect) ? true : false;//Проверка корректности введенных данных
+        isCorrect = (a == c && A == C && isCorrect) ? true : false;//РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
     }
 };
 
-class EquilateralTriangle : public Triangle // Класс равносторонний треугольник, наследник Triangle
+class EquilateralTriangle : public Triangle // РљР»Р°СЃСЃ СЂР°РІРЅРѕСЃС‚РѕСЂРѕРЅРЅРёР№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє, РЅР°СЃР»РµРґРЅРёРє Triangle
 {
 public:
-    EquilateralTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C)//Конструктор
+    EquilateralTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C)//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     {
-        name = "Равносторонний треугольник";
+        name = "Р Р°РІРЅРѕСЃС‚РѕСЂРѕРЅРЅРёР№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє";
         this->a = a;
         this->b = b;
         this->c = c;
         this->A = A;
         this->B = B;
         this->C = C;
-        isCorrect = (a == c && a == b && A == 60 && B == 60 && C == 60 && isCorrect) ? true : false;//Проверка корректности введенных данных
+        isCorrect = (a == c && a == b && A == 60 && B == 60 && C == 60 && isCorrect) ? true : false;//РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
     }
 };
 
-class Quadrilateral : public Triangle // Класс четырехугольник, наследник Triangle
+class Quadrilateral : public Triangle // РљР»Р°СЃСЃ С‡РµС‚С‹СЂРµС…СѓРіРѕР»СЊРЅРёРє, РЅР°СЃР»РµРґРЅРёРє Triangle
 {
 protected:
-    unsigned long d; // Сторона d
-    unsigned long D; // Угол D
+    unsigned long d; // РЎС‚РѕСЂРѕРЅР° d
+    unsigned long D; // РЈРіРѕР» D
 
 public:
-    Quadrilateral(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Triangle(a, b, c, A, B, C)//Конструктор
+    Quadrilateral(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Triangle(a, b, c, A, B, C)//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     {
         numberOfSides = 4;
-        name = "Четырехугольник";
+        name = "Р§РµС‚С‹СЂРµС…СѓРіРѕР»СЊРЅРёРє";
         this->a = a;
         this->b = b;
         this->c = c;
@@ -154,10 +154,10 @@ public:
         this->B = B;
         this->C = C;
         this->D = D;
-        isCorrect = ((A + B + C + D) == 360) ? true : false;//Проверка корректности введенных данных
+        isCorrect = ((A + B + C + D) == 360) ? true : false;//РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
     }
 
-    // Геттеры
+    // Р“РµС‚С‚РµСЂС‹
     unsigned long get_d() const
     {
         return d;
@@ -169,18 +169,18 @@ public:
 
     void print() override
     {
-        std::cout << name << ":" << std::endl << (isCorrect ? "Правильная" : "Неправильная") << std::endl << "Количество сторон: " << numberOfSides << std::endl << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl
-            << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
+        std::cout << name << ":" << std::endl << (isCorrect ? "РџСЂР°РІРёР»СЊРЅР°СЏ" : "РќРµРїСЂР°РІРёР»СЊРЅР°СЏ") << std::endl << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚РѕСЂРѕРЅ: " << numberOfSides << std::endl << "РЎС‚РѕСЂРѕРЅС‹: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl
+            << "РЈРіР»С‹: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
         std::cout << std::endl;
     }
 };
 
-class RectangleThis : public Quadrilateral // Класс Прямоугольник, наследник Quadrilateral
+class RectangleThis : public Quadrilateral // РљР»Р°СЃСЃ РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє, РЅР°СЃР»РµРґРЅРёРє Quadrilateral
 {
 public:
-    RectangleThis(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
+    RectangleThis(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     {
-        name = "Прямоугольник";
+        name = "РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє";
         this->a = a;
         this->b = b;
         this->c = c;
@@ -189,16 +189,16 @@ public:
         this->B = B;
         this->C = C;
         this->D = D;
-        isCorrect = (a == c && b == d && A == 90 && B == 90 && C == 90 && D == 90 && isCorrect) ? true : false;//Проверка корректности введенных данных
+        isCorrect = (a == c && b == d && A == 90 && B == 90 && C == 90 && D == 90 && isCorrect) ? true : false;//РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
     }
 };
 
-class Square : public Quadrilateral // Класс Квадрат, наследник Quadrilateral
+class Square : public Quadrilateral // РљР»Р°СЃСЃ РљРІР°РґСЂР°С‚, РЅР°СЃР»РµРґРЅРёРє Quadrilateral
 {
 public:
-    Square(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
+    Square(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     {
-        name = "Квадрат";
+        name = "РљРІР°РґСЂР°С‚";
         this->a = a;
         this->b = b;
         this->c = c;
@@ -207,16 +207,16 @@ public:
         this->B = B;
         this->C = C;
         this->D = D;
-        isCorrect = (a == b && b == c && c == d && A == 90 && B == 90 && C == 90 && D == 90 && isCorrect) ? true : false;//Проверка корректности введенных данных
+        isCorrect = (a == b && b == c && c == d && A == 90 && B == 90 && C == 90 && D == 90 && isCorrect) ? true : false;//РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
     }
 };
 
-class Parallelogram : public Quadrilateral // Класс Параллелограмм, наследник Quadrilateral
+class Parallelogram : public Quadrilateral // РљР»Р°СЃСЃ РџР°СЂР°Р»Р»РµР»РѕРіСЂР°РјРј, РЅР°СЃР»РµРґРЅРёРє Quadrilateral
 {
 public:
-    Parallelogram(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
+    Parallelogram(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     {
-        name = "Параллелограмм";
+        name = "РџР°СЂР°Р»Р»РµР»РѕРіСЂР°РјРј";
         this->a = a;
         this->b = b;
         this->c = c;
@@ -225,16 +225,16 @@ public:
         this->B = B;
         this->C = C;
         this->D = D;
-        isCorrect = (a == c && b == d && A == C && B == D && isCorrect) ? true : false;//Проверка корректности введенных данных
+        isCorrect = (a == c && b == d && A == C && B == D && isCorrect) ? true : false;//РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
     }
 };
 
-class Rhomb : public Quadrilateral // Класс Ромб, наследник Quadrilateral
+class Rhomb : public Quadrilateral // РљР»Р°СЃСЃ Р РѕРјР±, РЅР°СЃР»РµРґРЅРёРє Quadrilateral
 {
 public:
-    Rhomb(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
+    Rhomb(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
     {
-        name = "Ромб";
+        name = "Р РѕРјР±";
         this->a = a;
         this->b = b;
         this->c = c;
@@ -243,16 +243,16 @@ public:
         this->B = B;
         this->C = C;
         this->D = D;
-        isCorrect = (a == b && b == c && c == d && A == C && B == D && isCorrect) ? true : false;//Проверка корректности введенных данных
+        isCorrect = (a == b && b == c && c == d && A == C && B == D && isCorrect) ? true : false;//РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…
     }
 };
 
-void print_info(Figure* figure)//Печать в консоль
+void print_info(Figure* figure)//РџРµС‡Р°С‚СЊ РІ РєРѕРЅСЃРѕР»СЊ
 {
     figure->print();
 }
 
-void createFigure(Figure& typeOfFigure)//Убрал в эту функцию однотипные действия по созданию фигуры
+void createFigure(Figure& typeOfFigure)//РЈР±СЂР°Р» РІ СЌС‚Сѓ С„СѓРЅРєС†РёСЋ РѕРґРЅРѕС‚РёРїРЅС‹Рµ РґРµР№СЃС‚РІРёСЏ РїРѕ СЃРѕР·РґР°РЅРёСЋ С„РёРіСѓСЂС‹
 {
     Figure* figure = &typeOfFigure;
     print_info(figure);
@@ -263,43 +263,43 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    //Фигура
+    //Р¤РёРіСѓСЂР°
     Figure figure;
     print_info(&figure);
 
-    //Треугольник
+    //РўСЂРµСѓРіРѕР»СЊРЅРёРє
     Triangle triangle(10, 20, 30, 50, 60, 70);
     createFigure(triangle);
 
-    //Прямоугольный треугольник
+    //РџСЂСЏРјРѕСѓРіРѕР»СЊРЅС‹Р№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє
     RightTriangle rightTriangle(10, 20, 30, 50, 60, 90);
     createFigure(rightTriangle);
 
-    //Равнобедренный треугольник
+    //Р Р°РІРЅРѕР±РµРґСЂРµРЅРЅС‹Р№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє
     IsoscelesTriangle isoscelesTriangle(10, 20, 10, 50, 60, 50);
     createFigure(isoscelesTriangle);
 
-    //Равносторонний треугольник
+    //Р Р°РІРЅРѕСЃС‚РѕСЂРѕРЅРЅРёР№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє
     EquilateralTriangle equilateralTriangle(30, 30, 30, 60, 60, 60);
     createFigure(equilateralTriangle);
 
-    //Четырехугольник
+    //Р§РµС‚С‹СЂРµС…СѓРіРѕР»СЊРЅРёРє
     Quadrilateral quadrilateral(10, 20, 30, 40, 50, 60, 70, 80);
     createFigure(quadrilateral);
 
-    //Прямоугольник
+    //РџСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
     RectangleThis rectangle(10, 20, 10, 20, 90, 90, 90, 90);
     createFigure(rectangle);
 
-    //Квадрат
+    //РљРІР°РґСЂР°С‚
     Square square(10, 10, 10, 10, 90, 90, 90, 90);
     createFigure(square);
 
-    //Параллелограмм
+    //РџР°СЂР°Р»Р»РµР»РѕРіСЂР°РјРј
     Parallelogram parallelogram(20, 30, 20, 30, 30, 40, 30, 40);
     createFigure(parallelogram);
 
-    //Ромб
+    //Р РѕРјР±
     Rhomb rhomb(30, 30, 30, 30, 30, 40, 30, 40);
     createFigure(rhomb);
 
