@@ -19,7 +19,7 @@ public:
 class Triangle : public Figure
 {
 public:
-    Triangle()
+    Triangle() : Figure()
     {
         numberOfSides = 3;
     }
@@ -28,7 +28,7 @@ public:
 class Quadrilateral : public Figure
 {
 public:
-    Quadrilateral()
+    Quadrilateral() : Figure()
     {
         numberOfSides = 4;
     }

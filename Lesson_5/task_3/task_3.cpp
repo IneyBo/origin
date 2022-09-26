@@ -6,24 +6,27 @@ class Figure // Класс фигура
 protected:
     bool isCorrect = true; // Переменная для проверки введенных данных
     std::string name; // Имя фигуры для отображения в консоли
+    unsigned short numberOfSides;
 
 public:
     Figure()
     {
-
+        name = "Фигура";
+        numberOfSides = 0;
     }
     virtual void print() // Метод вывода в консоль
     {
-
+        std::cout << name << ":" << std::endl << (isCorrect ? "Правильная" : "Неправильная") << std::endl << "Количество сторон: " << numberOfSides << std::endl;
+        std::cout << std::endl;
     }
-    bool getISCorrect() const // Геттер переменной проверки введенных данных
-    {
-        return isCorrect;
-    }
-    std::string getName() const // Геттер имени фигуры
-    {
-        return name;
-    }
+    //bool getISCorrect() const // Геттер переменной проверки введенных данных
+    //{
+    //    return isCorrect;
+    //}
+    //std::string getName() const // Геттер имени фигуры
+    //{
+    //    return name;
+    //}
 };
 
 class Triangle : public Figure // Класс треугольник, наследник Figure
@@ -37,8 +40,9 @@ protected:
     unsigned long C; // Угол C
 
 public:
-    Triangle (unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Figure() // Конструктор
+    Triangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Figure() // Конструктор
     {
+        numberOfSides = 3;
         name = "Треугольник";
         this->a = a;
         this->b = b;
@@ -46,6 +50,7 @@ public:
         this->A = A;
         this->B = B;
         this->C = C;
+        isCorrect = ((A + B + C) == 180) ? true : false; //Проверка корректности введенных данных
     }
 
     // Геттеры
@@ -76,8 +81,8 @@ public:
 
     void print() override // Вывод в консоль
     {
-        std::cout   << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl
-                    << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
+        std::cout << name << ":" << std::endl << (isCorrect ? "Правильная" : "Неправильная") << std::endl << "Количество сторон: " << numberOfSides << std::endl << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl
+            << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
         std::cout << std::endl;
     }
 };
@@ -88,19 +93,13 @@ public:
     RightTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C) //Конструктор
     {
         name = "Прямоугольный треугольник";
-        if (C == 90)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = b;
+        this->c = c;
+        this->A = A;
+        this->B = B;
+        this->C = C;
+        isCorrect = (C == 90 && isCorrect) ? true : false;//Проверка корректности введенных данных
     }
 };
 
@@ -110,19 +109,13 @@ public:
     IsoscelesTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C)//Конструктор
     {
         name = "Равнобедренный треугольник";
-        if (a == c && A == C)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = b;
+        this->c = c;
+        this->A = A;
+        this->B = B;
+        this->C = C;
+        isCorrect = (a == c && A == C && isCorrect) ? true : false;//Проверка корректности введенных данных
     }
 };
 
@@ -132,19 +125,13 @@ public:
     EquilateralTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C)//Конструктор
     {
         name = "Равносторонний треугольник";
-        if (a == c && a == b && A == 60 && B == 60 && C == 60)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = b;
+        this->c = c;
+        this->A = A;
+        this->B = B;
+        this->C = C;
+        isCorrect = (a == c && a == b && A == 60 && B == 60 && C == 60 && isCorrect) ? true : false;//Проверка корректности введенных данных
     }
 };
 
@@ -157,6 +144,7 @@ protected:
 public:
     Quadrilateral(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Triangle(a, b, c, A, B, C)//Конструктор
     {
+        numberOfSides = 4;
         name = "Четырехугольник";
         this->a = a;
         this->b = b;
@@ -166,6 +154,7 @@ public:
         this->B = B;
         this->C = C;
         this->D = D;
+        isCorrect = ((A + B + C + D) == 360) ? true : false;//Проверка корректности введенных данных
     }
 
     // Геттеры
@@ -180,7 +169,7 @@ public:
 
     void print() override
     {
-        std::cout << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl
+        std::cout << name << ":" << std::endl << (isCorrect ? "Правильная" : "Неправильная") << std::endl << "Количество сторон: " << numberOfSides << std::endl << "Стороны: a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl
             << "Углы: A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl;
         std::cout << std::endl;
     }
@@ -192,21 +181,15 @@ public:
     RectangleThis(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
     {
         name = "Прямоугольник";
-        if (a == c && b == d && A == 90 && B == 90 && C == 90 && D == 90)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->d = d;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-            this->D = D;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = b;
+        this->c = c;
+        this->d = d;
+        this->A = A;
+        this->B = B;
+        this->C = C;
+        this->D = D;
+        isCorrect = (a == c && b == d && A == 90 && B == 90 && C == 90 && D == 90 && isCorrect) ? true : false;//Проверка корректности введенных данных
     }
 };
 
@@ -216,21 +199,15 @@ public:
     Square(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
     {
         name = "Квадрат";
-        if (a == b && b == c && c == d && A == 90 && B == 90 && C == 90 && D == 90)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->d = d;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-            this->D = D;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = b;
+        this->c = c;
+        this->d = d;
+        this->A = A;
+        this->B = B;
+        this->C = C;
+        this->D = D;
+        isCorrect = (a == b && b == c && c == d && A == 90 && B == 90 && C == 90 && D == 90 && isCorrect) ? true : false;//Проверка корректности введенных данных
     }
 };
 
@@ -240,21 +217,15 @@ public:
     Parallelogram(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
     {
         name = "Параллелограмм";
-        if (a == c && b == d && A == C && B == D)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->d = d;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-            this->D = D;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = b;
+        this->c = c;
+        this->d = d;
+        this->A = A;
+        this->B = B;
+        this->C = C;
+        this->D = D;
+        isCorrect = (a == c && b == d && A == C && B == D && isCorrect) ? true : false;//Проверка корректности введенных данных
     }
 };
 
@@ -264,21 +235,15 @@ public:
     Rhomb(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
     {
         name = "Ромб";
-        if (a == b && b == c && c == d && A == C && B == D)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->d = d;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-            this->D = D;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = b;
+        this->c = c;
+        this->d = d;
+        this->A = A;
+        this->B = B;
+        this->C = C;
+        this->D = D;
+        isCorrect = (a == b && b == c && c == d && A == C && B == D && isCorrect) ? true : false;//Проверка корректности введенных данных
     }
 };
 
@@ -289,22 +254,18 @@ void print_info(Figure* figure)//Печать в консоль
 
 void createFigure(Figure& typeOfFigure)//Убрал в эту функцию однотипные действия по созданию фигуры
 {
-    std::cout << typeOfFigure.getName() << ":" << std::endl;
-    if (!typeOfFigure.getISCorrect())
-    {
-        std::cout << "Фигуру с такими параметрами создать нельзя" << std::endl << std::endl;
-    }
-    else
-    {
-        Figure* figure = &typeOfFigure;
-        print_info(figure);
-    }
+    Figure* figure = &typeOfFigure;
+    print_info(figure);
 }
 
 int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+
+    //Фигура
+    Figure figure;
+    print_info(&figure);
 
     //Треугольник
     Triangle triangle(10, 20, 30, 50, 60, 70);
