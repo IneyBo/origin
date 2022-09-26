@@ -19,14 +19,6 @@ public:
         std::cout << name << ":" << std::endl << (isCorrect ? "Правильная" : "Неправильная") << std::endl << "Количество сторон: " << numberOfSides << std::endl;
         std::cout << std::endl;
     }
-    //bool getISCorrect() const // Геттер переменной проверки введенных данных
-    //{
-    //    return isCorrect;
-    //}
-    //std::string getName() const // Геттер имени фигуры
-    //{
-    //    return name;
-    //}
 };
 
 class Triangle : public Figure // Класс треугольник, наследник Figure
