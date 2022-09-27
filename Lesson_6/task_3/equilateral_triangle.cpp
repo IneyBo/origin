@@ -1,8 +1,8 @@
-#include "equilateral_triangle.h"
+п»ї#include "equilateral_triangle.h"
 
-EquilateralTriangle::EquilateralTriangle(unsigned long a) : Triangle(a, b, c, A, B, C)//Конструктор
+EquilateralTriangle::EquilateralTriangle(unsigned long a) : Triangle(a, b, c, A, B, C)//РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 {
-    name = "Равносторонний треугольник";
+    name = "Р Р°РІРЅРѕСЃС‚РѕСЂРѕРЅРЅРёР№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє";
     this->a = a;
     this->b = a;
     this->c = a;

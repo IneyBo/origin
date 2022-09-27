@@ -14,7 +14,6 @@ Quadrilateral::Quadrilateral(unsigned long a, unsigned long b, unsigned long c, 
     this->B = B;
     this->C = C;
     this->D = D;
-    //isCorrect = ((A + B + C + D) == 360) ? true : false;//Проверка корректности введенных данных
 }
 
 // Геттеры

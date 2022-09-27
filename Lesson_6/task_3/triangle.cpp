@@ -1,21 +1,20 @@
-#include <iostream>
+п»ї#include <iostream>
 
 #include "triangle.h"
 
-Triangle::Triangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Figure() // Конструктор
+Triangle::Triangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Figure() // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 {
     numberOfSides = 3;
-    name = "Треугольник";
+    name = "РўСЂРµСѓРіРѕР»СЊРЅРёРє";
     this->a = a;
     this->b = b;
     this->c = c;
     this->A = A;
     this->B = B;
     this->C = C;
-    //isCorrect = ((A + B + C) == 180) ? true : false; //Проверка корректности введенных данных
 }
 
-// Геттеры
+// Р“РµС‚С‚РµСЂС‹
 unsigned long Triangle::get_a() const
 {
     return a;
@@ -46,9 +45,9 @@ bool Triangle::isCorrect()
     return ((A + B + C) == 180) ? true : false;
 }
 
-void Triangle::print() // Вывод в консоль
+void Triangle::print() // Р’С‹РІРѕРґ РІ РєРѕРЅСЃРѕР»СЊ
 {
-    std::cout << name << ":" << std::endl << (isCorrect() ? "Правильная" : "Неправильная") << std::endl << "Количество сторон: " << numberOfSides << std::endl << "Стороны: a=" << a << " b=" << b << " c=" << c << std::endl
-        << "Углы: A=" << A << " B=" << B << " C=" << C << std::endl;
+    std::cout << name << ":" << std::endl << (isCorrect() ? "РџСЂР°РІРёР»СЊРЅР°СЏ" : "РќРµРїСЂР°РІРёР»СЊРЅР°СЏ") << std::endl << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚РѕСЂРѕРЅ: " << numberOfSides << std::endl << "РЎС‚РѕСЂРѕРЅС‹: a=" << a << " b=" << b << " c=" << c << std::endl
+        << "РЈРіР»С‹: A=" << A << " B=" << B << " C=" << C << std::endl;
     std::cout << std::endl;
 }
