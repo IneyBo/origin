@@ -4,7 +4,6 @@
 class Figure // Класс фигура
 {
 protected:
-    bool isCorrect = true; // Переменная для проверки введенных данных
     std::string name; // Имя фигуры для отображения в консоли
 
 public:
@@ -15,10 +14,6 @@ public:
     virtual void print() // Метод вывода в консоль
     {
 
-    }
-    bool getISCorrect() const // Геттер переменной проверки введенных данных
-    {
-        return isCorrect;
     }
     std::string getName() const // Геттер имени фигуры
     {
@@ -37,7 +32,7 @@ protected:
     unsigned long C; // Угол C
 
 public:
-    Triangle (unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Figure() // Конструктор
+    Triangle (unsigned long a , unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Figure() // Конструктор
     {
         name = "Треугольник";
         this->a = a;
@@ -85,66 +80,45 @@ public:
 class RightTriangle : public Triangle // Класс прямоугольный треугольник, наследник Triangle
 {
 public:
-    RightTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C) //Конструктор
+    RightTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B) : Triangle(a, b, c, A, B, C) //Конструктор
     {
         name = "Прямоугольный треугольник";
-        if (C == 90)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = b;
+        this->c = c;
+        this->A = A;
+        this->B = B;
+        this->C = 90;
     }
 };
 
 class IsoscelesTriangle : public Triangle // Класс равнобедренный треугольник, наследник Triangle
 {
 public:
-    IsoscelesTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C)//Конструктор
+    IsoscelesTriangle(unsigned long a, unsigned long b, unsigned long A, unsigned long B) : Triangle(a, b, c, A, B, C)//Конструктор
     {
         name = "Равнобедренный треугольник";
-        if (a == c && A == C)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = b;
+        this->c = a;
+        this->A = A;
+        this->B = B;
+        this->C = A;
     }
 };
 
 class EquilateralTriangle : public Triangle // Класс равносторонний треугольник, наследник Triangle
 {
 public:
-    EquilateralTriangle(unsigned long a, unsigned long b, unsigned long c, unsigned long A, unsigned long B, unsigned long C) : Triangle(a, b, c, A, B, C)//Конструктор
+    EquilateralTriangle(unsigned long a) : Triangle(a, b, c, A, B, C)//Конструктор
     {
         name = "Равносторонний треугольник";
-        if (a == c && a == b && A == 60 && B == 60 && C == 60)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = a;
+        this->c = a;
+        this->A = 60;
+        this->B = 60;
+        this->C = 60;
     }
 };
 
@@ -189,96 +163,68 @@ public:
 class RectangleThis : public Quadrilateral // Класс Прямоугольник, наследник Quadrilateral
 {
 public:
-    RectangleThis(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
+    RectangleThis(unsigned long a, unsigned long b) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
     {
         name = "Прямоугольник";
-        if (a == c && b == d && A == 90 && B == 90 && C == 90 && D == 90)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->d = d;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-            this->D = D;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = b;
+        this->c = a;
+        this->d = b;
+        this->A = 90;
+        this->B = 90;
+        this->C = 90;
+        this->D = 90;
     }
 };
 
 class Square : public Quadrilateral // Класс Квадрат, наследник Quadrilateral
 {
 public:
-    Square(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
+    Square(unsigned long a) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
     {
         name = "Квадрат";
-        if (a == b && b == c && c == d && A == 90 && B == 90 && C == 90 && D == 90)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->d = d;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-            this->D = D;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = a;
+        this->c = a;
+        this->d = a;
+        this->A = 90;
+        this->B = 90;
+        this->C = 90;
+        this->D = 90;
     }
 };
 
 class Parallelogram : public Quadrilateral // Класс Параллелограмм, наследник Quadrilateral
 {
 public:
-    Parallelogram(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
+    Parallelogram(unsigned long a, unsigned long b, unsigned long A, unsigned long B) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
     {
         name = "Параллелограмм";
-        if (a == c && b == d && A == C && B == D)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->d = d;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-            this->D = D;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = b;
+        this->c = a;
+        this->d = b;
+        this->A = A;
+        this->B = B;
+        this->C = A;
+        this->D = B;
     }
 };
 
 class Rhomb : public Quadrilateral // Класс Ромб, наследник Quadrilateral
 {
 public:
-    Rhomb(unsigned long a, unsigned long b, unsigned long c, unsigned long d, unsigned long A, unsigned long B, unsigned long C, unsigned long D) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
+    Rhomb(unsigned long a, unsigned long A, unsigned long B) : Quadrilateral(a, b, c, d, A, B, C, D)//Конструктор
     {
         name = "Ромб";
-        if (a == b && b == c && c == d && A == C && B == D)//Проверка корректности введенных данных
-        {
-            this->a = a;
-            this->b = b;
-            this->c = c;
-            this->d = d;
-            this->A = A;
-            this->B = B;
-            this->C = C;
-            this->D = D;
-        }
-        else
-        {
-            isCorrect = false;
-        }
+        this->a = a;
+        this->b = a;
+        this->c = a;
+        this->d = a;
+        this->A = A;
+        this->B = B;
+        this->C = A;
+        this->D = B;
     }
 };
 
@@ -290,15 +236,8 @@ void print_info(Figure* figure)//Печать в консоль
 void createFigure(Figure& typeOfFigure)//Убрал в эту функцию однотипные действия по созданию фигуры
 {
     std::cout << typeOfFigure.getName() << ":" << std::endl;
-    if (!typeOfFigure.getISCorrect())
-    {
-        std::cout << "Фигуру с такими параметрами создать нельзя" << std::endl << std::endl;
-    }
-    else
-    {
-        Figure* figure = &typeOfFigure;
-        print_info(figure);
-    }
+    Figure* figure = &typeOfFigure;
+    print_info(figure);
 }
 
 int main()
@@ -311,15 +250,15 @@ int main()
     createFigure(triangle);
 
     //Прямоугольный треугольник
-    RightTriangle rightTriangle(10, 20, 30, 50, 60, 90);
+    RightTriangle rightTriangle(10, 20, 30, 50, 60);
     createFigure(rightTriangle);
 
     //Равнобедренный треугольник
-    IsoscelesTriangle isoscelesTriangle(10, 20, 10, 50, 60, 50);
+    IsoscelesTriangle isoscelesTriangle(10, 20, 50, 60);
     createFigure(isoscelesTriangle);
 
     //Равносторонний треугольник
-    EquilateralTriangle equilateralTriangle(30, 30, 30, 60, 60, 60);
+    EquilateralTriangle equilateralTriangle(30);
     createFigure(equilateralTriangle);
 
     //Четырехугольник
@@ -327,19 +266,19 @@ int main()
     createFigure(quadrilateral);
 
     //Прямоугольник
-    RectangleThis rectangle(10, 20, 10, 20, 90, 90, 90, 90);
+    RectangleThis rectangle(10, 20);
     createFigure(rectangle);
 
     //Квадрат
-    Square square(10, 10, 10, 10, 90, 90, 90, 90);
+    Square square(10);
     createFigure(square);
 
     //Параллелограмм
-    Parallelogram parallelogram(20, 30, 20, 30, 30, 40, 30, 40);
+    Parallelogram parallelogram(20, 30, 30, 40);
     createFigure(parallelogram);
 
     //Ромб
-    Rhomb rhomb(30, 30, 30, 30, 30, 40, 30, 40);
+    Rhomb rhomb(30, 30, 40);
     createFigure(rhomb);
 
     return 0;
