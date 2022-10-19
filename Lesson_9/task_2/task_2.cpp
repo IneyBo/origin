@@ -172,7 +172,7 @@ int main()
 	std::cout << "Значение дроби 1 =";
 	print(f1);
 
-	std::cout << "--" << numerator1 << "/" << denominator1 << " * " << numerator2 << "/" << denominator2 << " = ";
+	std::cout << numerator1 << "/" << denominator1 << "-- * " << numerator2 << "/" << denominator2 << " = ";
 	print(f1-- * f2);
 	std::cout << "Значение дроби 1 =";
 	print(f1);
