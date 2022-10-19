@@ -1,4 +1,4 @@
-#include <Windows.h>
+п»ї#include <Windows.h>
 #include <iostream>
 #include <cmath>
 
@@ -22,48 +22,56 @@ public:
 	{
 		return denominator_;
 	}
-	int greatestCommonDivisor(int x_, int y_) // Наибольший общий делитель. Используетсмя как для сложения-вычитания дробей, так и для скокращения дробей
+	int greatestCommonDivisor(int x_, int y_) // РќР°РёР±РѕР»СЊС€РёР№ РѕР±С‰РёР№ РґРµР»РёС‚РµР»СЊ. РСЃРїРѕР»СЊР·СѓРµС‚СЃРјСЏ РєР°Рє РґР»СЏ СЃР»РѕР¶РµРЅРёСЏ-РІС‹С‡РёС‚Р°РЅРёСЏ РґСЂРѕР±РµР№, С‚Р°Рє Рё РґР»СЏ СЃРѕРєСЂР°С‰РµРЅРёСЏ РґСЂРѕР±РµР№
 	{
 		int x = abs(x_);
 		int y = abs(y_);
 
-		while (x != y) {
-			if (x > y) {
-				x = x - y;
-			}
-			else {
-				y = y - x;
-			}
+		if (x_ == 0 || y_ == 0)
+		{
+			return 1;
 		}
-		return x;
+		else
+		{
+			while (x != y) {
+				if (x > y) {
+					x = x - y;
+				}
+				else {
+					y = y - x;
+				}
+			}
+			return x;
+		}
 	}
-	int leastCommonMultiple(int denominator) // Наименьшее общее кратное
-	{
-		return (denominator_ * denominator) / greatestCommonDivisor(numerator_, denominator);
+	int leastCommonMultiple(int denominator) // РќР°РёРјРµРЅСЊС€РµРµ РѕР±С‰РµРµ РєСЂР°С‚РЅРѕРµ
+	{		
+		return (denominator_ * denominator) / greatestCommonDivisor(denominator_, denominator);
+		//return (denominator_ * denominator) / greatestCommonDivisor(numerator_, denominator);
 	}
 	Fraction operator+(Fraction other)
 	{
-		int least_common_multiple = leastCommonMultiple(other.denominator_); // Наименьшее общее кратное для числителя и знаменателя
+		int least_common_multiple = leastCommonMultiple(other.denominator_); // РќР°РёРјРµРЅСЊС€РµРµ РѕР±С‰РµРµ РєСЂР°С‚РЅРѕРµ Р·РЅР°РјРµРЅР°С‚РµР»РµР№ РґРІСѓС… РґСЂРѕР±РµР№
 
-		int additionalMultiplier1 = least_common_multiple / denominator_; // Дополнительный множитель для первого числителя
-		int additionalMultiplier2 = least_common_multiple / other.denominator_; // Дополнительный множитель для второго числителя
+		int additionalMultiplier1 = least_common_multiple / denominator_; // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РјРЅРѕР¶РёС‚РµР»СЊ РґР»СЏ РїРµСЂРІРѕРіРѕ С‡РёСЃР»РёС‚РµР»СЏ
+		int additionalMultiplier2 = least_common_multiple / other.denominator_; // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РјРЅРѕР¶РёС‚РµР»СЊ РґР»СЏ РІС‚РѕСЂРѕРіРѕ С‡РёСЃР»РёС‚РµР»СЏ
 
-		int numerator = (additionalMultiplier1 * numerator_) + (additionalMultiplier2 * other.numerator_); // Итоговый числитель
+		int numerator = (additionalMultiplier1 * numerator_) + (additionalMultiplier2 * other.numerator_); // РС‚РѕРіРѕРІС‹Р№ С‡РёСЃР»РёС‚РµР»СЊ
 
-		int greatest_common_divisor = greatestCommonDivisor(numerator, least_common_multiple); // Наибольший общий делитель для итоговой дроби
+		int greatest_common_divisor = greatestCommonDivisor(numerator, least_common_multiple); // РќР°РёР±РѕР»СЊС€РёР№ РѕР±С‰РёР№ РґРµР»РёС‚РµР»СЊ РґР»СЏ РёС‚РѕРіРѕРІРѕР№ РґСЂРѕР±Рё
 		
 		return Fraction((numerator / greatest_common_divisor), (least_common_multiple / greatest_common_divisor));
 	}
 	Fraction operator-(Fraction other)
 	{
-		int least_common_multiple = leastCommonMultiple(other.denominator_); // Наименьшее общее кратное для числителя и знаменателя
+		int least_common_multiple = leastCommonMultiple(other.denominator_); // РќР°РёРјРµРЅСЊС€РµРµ РѕР±С‰РµРµ РєСЂР°С‚РЅРѕРµ Р·РЅР°РјРµРЅР°С‚РµР»РµР№ РґРІСѓС… РґСЂРѕР±РµР№
 
-		int additionalMultiplier1 = least_common_multiple / denominator_; // Дополнительный множитель для первого числителя
-		int additionalMultiplier2 = least_common_multiple / other.denominator_; // Дополнительный множитель для второго числителя
+		int additionalMultiplier1 = least_common_multiple / denominator_; // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РјРЅРѕР¶РёС‚РµР»СЊ РґР»СЏ РїРµСЂРІРѕРіРѕ С‡РёСЃР»РёС‚РµР»СЏ
+		int additionalMultiplier2 = least_common_multiple / other.denominator_; // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РјРЅРѕР¶РёС‚РµР»СЊ РґР»СЏ РІС‚РѕСЂРѕРіРѕ С‡РёСЃР»РёС‚РµР»СЏ
 
-		int numerator = (additionalMultiplier1 * numerator_) - (additionalMultiplier2 * other.numerator_); // Итоговый числитель
+		int numerator = (additionalMultiplier1 * numerator_) - (additionalMultiplier2 * other.numerator_); // РС‚РѕРіРѕРІС‹Р№ С‡РёСЃР»РёС‚РµР»СЊ
 
-		int greatest_common_divisor = greatestCommonDivisor(numerator, least_common_multiple); // Наибольший общий делитель для итоговой дроби
+		int greatest_common_divisor = greatestCommonDivisor(numerator, least_common_multiple); // РќР°РёР±РѕР»СЊС€РёР№ РѕР±С‰РёР№ РґРµР»РёС‚РµР»СЊ РґР»СЏ РёС‚РѕРіРѕРІРѕР№ РґСЂРѕР±Рё
 
 		return Fraction((numerator / greatest_common_divisor), (least_common_multiple / greatest_common_divisor));
 	}
@@ -72,7 +80,7 @@ public:
 		int numerator = numerator_ * other.numerator_;
 		int denominator = denominator_ * other.denominator_;
 
-		int greatest_common_divisor = greatestCommonDivisor(numerator, denominator); // Наибольший общий делитель для итоговой дроби
+		int greatest_common_divisor = greatestCommonDivisor(numerator, denominator); // РќР°РёР±РѕР»СЊС€РёР№ РѕР±С‰РёР№ РґРµР»РёС‚РµР»СЊ РґР»СЏ РёС‚РѕРіРѕРІРѕР№ РґСЂРѕР±Рё
 
 		return Fraction((numerator / greatest_common_divisor), (denominator / greatest_common_divisor));
 	}
@@ -81,7 +89,7 @@ public:
 		int numerator = numerator_ * other.denominator_;
 		int denominator = denominator_ * other.numerator_;
 
-		int greatest_common_divisor = greatestCommonDivisor(numerator, denominator); // Наибольший общий делитель для итоговой дроби
+		int greatest_common_divisor = greatestCommonDivisor(numerator, denominator); // РќР°РёР±РѕР»СЊС€РёР№ РѕР±С‰РёР№ РґРµР»РёС‚РµР»СЊ РґР»СЏ РёС‚РѕРіРѕРІРѕР№ РґСЂРѕР±Рё
 
 		return Fraction((numerator / greatest_common_divisor), (denominator / greatest_common_divisor));
 	}
@@ -93,7 +101,7 @@ public:
 	{
 		numerator_ = numerator_ + denominator_;
 
-		int greatest_common_divisor = greatestCommonDivisor(numerator_, denominator_); // Наибольший общий делитель для итоговой дроби
+		int greatest_common_divisor = greatestCommonDivisor(numerator_, denominator_); // РќР°РёР±РѕР»СЊС€РёР№ РѕР±С‰РёР№ РґРµР»РёС‚РµР»СЊ РґР»СЏ РёС‚РѕРіРѕРІРѕР№ РґСЂРѕР±Рё
 		
 		return Fraction((numerator_ / greatest_common_divisor), (denominator_ / greatest_common_divisor));
 	}
@@ -103,7 +111,7 @@ public:
 
 		numerator_ = numerator_ + denominator_;
 
-		int greatest_common_divisor = greatestCommonDivisor(numerator_, denominator_); // Наибольший общий делитель для итоговой дроби
+		int greatest_common_divisor = greatestCommonDivisor(numerator_, denominator_); // РќР°РёР±РѕР»СЊС€РёР№ РѕР±С‰РёР№ РґРµР»РёС‚РµР»СЊ РґР»СЏ РёС‚РѕРіРѕРІРѕР№ РґСЂРѕР±Рё
 
 		numerator_ = numerator_ / greatest_common_divisor;
 		denominator_ = denominator_ / greatest_common_divisor;
@@ -112,7 +120,7 @@ public:
 	{
 		numerator_ = numerator_ - denominator_;
 
-		int greatest_common_divisor = greatestCommonDivisor(numerator_, denominator_); // Наибольший общий делитель для итоговой дроби
+		int greatest_common_divisor = greatestCommonDivisor(numerator_, denominator_); // РќР°РёР±РѕР»СЊС€РёР№ РѕР±С‰РёР№ РґРµР»РёС‚РµР»СЊ РґР»СЏ РёС‚РѕРіРѕРІРѕР№ РґСЂРѕР±Рё
 
 		return Fraction((numerator_ / greatest_common_divisor), (denominator_ / greatest_common_divisor));
 	}
@@ -122,7 +130,7 @@ public:
 
 		numerator_ = numerator_ - denominator_;
 
-		int greatest_common_divisor = greatestCommonDivisor(numerator_, denominator_); // Наибольший общий делитель для итоговой дроби
+		int greatest_common_divisor = greatestCommonDivisor(numerator_, denominator_); // РќР°РёР±РѕР»СЊС€РёР№ РѕР±С‰РёР№ РґРµР»РёС‚РµР»СЊ РґР»СЏ РёС‚РѕРіРѕРІРѕР№ РґСЂРѕР±Рё
 
 		numerator_ = numerator_ / greatest_common_divisor;
 		denominator_ = denominator_ / greatest_common_divisor;
@@ -133,7 +141,14 @@ public:
 
 void print(Fraction fraction)
 {
-	std::cout << fraction.getNumerator_() << "/" << fraction.getDenominator_() << std::endl;
+	if (fraction.getNumerator_() != 0)
+	{
+		std::cout << fraction.getNumerator_() << "/" << fraction.getDenominator_() << std::endl;
+	}
+	else
+	{
+		std::cout << "0" << std::endl;
+	}
 }
 
 int main()
@@ -143,13 +158,13 @@ int main()
 
 	int numerator1, numerator2, denominator1, denominator2;
 
-	std::cout << "Введите числитель дроби 1: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»РёС‚РµР»СЊ РґСЂРѕР±Рё 1: ";
 	std::cin >> numerator1;
-	std::cout << "Введите знаменатель дроби 1: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°РјРµРЅР°С‚РµР»СЊ РґСЂРѕР±Рё 1: ";
 	std::cin >> denominator1;
-	std::cout << "Введите числитель дроби 2: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ С‡РёСЃР»РёС‚РµР»СЊ РґСЂРѕР±Рё 2: ";
 	std::cin >> numerator2;
-	std::cout << "Введите знаменатель дроби 2: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°РјРµРЅР°С‚РµР»СЊ РґСЂРѕР±Рё 2: ";
 	std::cin >> denominator2;
 
 	Fraction f1(numerator1, denominator1);
@@ -167,14 +182,14 @@ int main()
 	std::cout << numerator1 << "/" << denominator1 << " / " << numerator2 << "/" << denominator2 << " = ";
 	print(f1 / f2);
 
-	std::cout << "++" << numerator1 << "/" << denominator1 << " * " << numerator2 << "/" << denominator2 << " = ";
-	print(++f1 * f2);
-	std::cout << "Значение дроби 1 =";
+	std::cout << "--" << numerator1 << "/" << denominator1 << " * " << numerator2 << "/" << denominator2 << " = ";
+	print(--f1 * f2);
+	std::cout << "Р—РЅР°С‡РµРЅРёРµ РґСЂРѕР±Рё 1 = ";
 	print(f1);
 
-	std::cout << numerator1 << "/" << denominator1 << "-- * " << numerator2 << "/" << denominator2 << " = ";
-	print(f1-- * f2);
-	std::cout << "Значение дроби 1 =";
+	std::cout << numerator1 << "/" << denominator1 << "++ * " << numerator2 << "/" << denominator2 << " = ";
+	print(f1++ * f2);
+	std::cout << "Р—РЅР°С‡РµРЅРёРµ РґСЂРѕР±Рё 1 = ";
 	print(f1);
 
 	return 0;

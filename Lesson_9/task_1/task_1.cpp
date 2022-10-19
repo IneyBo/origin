@@ -1,4 +1,5 @@
-#include <iostream>
+﻿#include <iostream>
+#include <cmath>
 
 class Fraction
 {
@@ -12,6 +13,25 @@ public:
 		numerator_ = numerator;
 		denominator_ = denominator;
 	}
+	int greatestCommonDivisor(int x_, int y_) // Наибольший общий делитель
+	{
+		int x = abs(x_);
+		int y = abs(y_);
+
+		while (x != y) {
+			if (x > y) {
+				x = x - y;
+			}
+			else {
+				y = y - x;
+			}
+		}
+		return x;
+	}
+	int leastCommonMultiple(int denominator) // Наименьшее общее кратное
+	{
+		return (denominator_ * denominator) / greatestCommonDivisor(numerator_, denominator);
+	}
 	bool operator==(Fraction fraction)
 	{
 		return (fraction.numerator_ * this->denominator_ == this->numerator_ * fraction.denominator_);
@@ -20,9 +40,19 @@ public:
 	{
 		return !(*this == fraction);
 	}
+	// Так как сравнивать числа с плавающей запятой нельзя, решил сделать сравнение через числители дробей, приведенных к общему знаменателю
 	bool operator<(Fraction fraction)
 	{
-		return ((this->numerator_ / this->denominator_) < (fraction.numerator_ / fraction.denominator_));
+		int least_common_multiple = leastCommonMultiple(fraction.denominator_); // Наименьшее общее кратное для числителя и знаменателя
+
+		int additionalMultiplier1 = least_common_multiple / denominator_; // Дополнительный множитель для первого числителя
+		int additionalMultiplier2 = least_common_multiple / fraction.denominator_; // Дополнительный множитель для второго числителя
+
+		int numerator1 = additionalMultiplier1 * numerator_; // Итоговый первый числитель
+
+		int numerator2 = additionalMultiplier2 * fraction.numerator_; // Итоговый второй  числитель
+
+		return (numerator1 < numerator2);
 	}
 	bool operator>(Fraction fraction)
 	{
