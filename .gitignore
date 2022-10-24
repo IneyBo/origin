@@ -5,6 +5,7 @@
 **/*.vcxproj.user
 **/x64
 **/reserve
+**/out
 
 # Full Address
 Lesson_1/Lesson_1.sln
