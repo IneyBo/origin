@@ -6,6 +6,15 @@
 **/x64
 **/reserve
 **/out
+**/*.pdb
+**/*.idb
+**/*.exe
+**/*.obj
+**/*.recipe
+**/*.log
+**/*.tlog
+**/*.lastbuildstate
+**/*.ilk
 
 # Full Address
 Lesson_1/Lesson_1.sln
