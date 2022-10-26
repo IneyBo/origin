@@ -1,8 +1,8 @@
-ï»¿#include <iostream>
+#include <iostream>
 
 #include <Windows.h>
 
-#include "../LeaverLibraryDynamic/leaver.h"
+#include "leaver.h"
 
 int main()
 {
@@ -10,7 +10,7 @@ int main()
     SetConsoleOutputCP(1251);
 
     Communication::Leaver leaving;
-    std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ: ";
+    std::cout << "Ââåäèòå èìÿ: ";
     std::string inputWord;
     std::cin >> inputWord;
     std::cout << leaving.leave(inputWord) << std::endl;
