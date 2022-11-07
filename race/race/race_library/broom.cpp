@@ -16,8 +16,8 @@ namespace race
 		}
 		else if (distance >= 1000)
 		{
-			distanceReductionCoefficient = (distance / 1000) * 0.01;
+			distanceReductionCoefficient = static_cast<double>(distance / 1000) * 0.01;
 		}
-		time = distance / ((1 - distanceReductionCoefficient) * speed);
+		time = (distance * (1 - distanceReductionCoefficient)) / speed;
 	}
 }

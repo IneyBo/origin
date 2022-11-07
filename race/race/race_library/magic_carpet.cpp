@@ -26,6 +26,6 @@ namespace race
 		{
 			distanceReductionCoefficient = 0.05;
 		}
-		time = distance / ((1 - distanceReductionCoefficient) * speed);
+		time = (distance * (1 - distanceReductionCoefficient)) / speed;
 	}
 }

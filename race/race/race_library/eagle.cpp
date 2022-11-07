@@ -6,10 +6,10 @@ namespace race
 	{
 		name = "Орел";
 		speed = 8;
-		distanceReductionCoefficient = 0,06;
+		distanceReductionCoefficient = 0.06;
 	}
 	void Eagle::timeCalculation(int distance)
 	{
-		time = distance / ((1 - distanceReductionCoefficient) * speed);
+		time = (distance * (1 - distanceReductionCoefficient)) / speed;
 	}
 }
